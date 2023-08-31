@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Evepraisal Clone - Price check Eve Online items from Cargo Scans,
+		Contracts, D-Scan, EFT, Inventory, Asset listing, Loot History, PI, Survey
+		Scanner, Killmails, Wallet Transactions, Inventory, Assets</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description"
+		content="Price check Eve Online items from Cargo Scans, Contracts, D-Scan, EFT, Inventory, Asset listing, Loot History, PI, Survey Scanner, Killmails, Wallet TransactionsBlocks, Inventory, Assets" />
+
+	<base target="_blank">
+
+	<link rel="icon" href="favicon.ico" />
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+	</style>
+	<link href="./css/normalize.css" rel="stylesheet" />
+	<link href="./css/photon.css" rel="stylesheet" />
+	<link href="./css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+	<link
+		href="https://evepraisal.com/static/thirdparty/fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.css"
+		rel="stylesheet">
+
+	<script>
+		window.addEventListener("load", () => {
+			window.cookieconsent.initialise({
+				palette: {
+					popup: {
+						background: "#00000000",
+						text: "#fff",
+					},
+					button: {
+						background: "#4b81e8",
+					},
+				},
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<aside id="cc" role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cc:desc">
+		<span id="cc:desc">
+			<p>Hi! This page uses no cookies at all.</p>
+			<a aria-label="learn more about cookies" role="button" tabindex="0" href="https://www.cookiesandyou.com"
+				rel="noopener noreferrer nofollow">Knowledge Is Power!</a>
+		</span>
+		<form class="cc-compliance">
+			<button aria-label="dismiss cookie message" role="button" tabindex="0" type="submit"
+				class="btn btn-primary">Got it!</button>
+		</form>
+	</aside>
+
+	<nav>
+		<h1 class="brand">Evepraisal Clone</h1>
+		<h2 class="subtitle">Easy-to-use parser and price lookup tool for Eve Online</h2>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<form class="search float-right" action="search" method="GET" role="search">
+					<input class="search-input" id="search" name="q" type="text" disabled="true"
+						placeholder="Working On It..." data="Item Name..." autocomplete="off" spellcheck="false"
+						dir="auto" />
+					<button class="btn btn-search btn-secondary" type="submit">
+						Search
+					</button>
+				</form>
+			</li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="form-area">
+			<form id="appraisal-form" action="appraisal" method="POST" enctype="multipart/form-data">
+				<div class="hidden modal" id="configure-appraisal-modal" tabindex="-1" role="dialog"
+					aria-labelledby="configure-appraisal-modal-label" aria-hidden="true">
+					<section class="modal-dialog" role="document">
+						<section class="modal-content">
+							<header class="toolbar">
+								<h1 class="title" id="config-modal-label">Appraisal Settings</h1>
+							</header>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="persist">Persist appraisals for later</label>
+									<select id="persist" name="persist" disabled="true" class="form-control">
+										<option value="under-construction" selected="">Under Construction</option>
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="price_percentage">Price Percentage</label>
+									<div class="input-group">
+										<input type="text" class="form-control number-only" value="100"
+											placeholder="100" name="price_percentage" id="price_percentage"
+											data-twofas-input="true" />
+									</div>
+								</div>
+							</div>
+							<footer class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">
+									Close
+								</button>
+							</footer>
+						</section>
+					</section>
+				</div>
+				<div id="main-form">
+					<div class="card-body">
+						<header>
+							<h3>Quick Estimate</h3>
+							<nav class="nav-item">
+							</nav>
+							<section class="float-right align-top">
+							</section>
+						</header>
+						<div class="form-group">
+							<textarea class="form-control" id="raw_textarea" name="raw_textarea" rows="8"
+								placeholder="put stuff to appraise here. protip: <ctrl+a, ctrl+c, ctrl+v"
+								onclick="this.select()"></textarea>
+						</div>
+						<div class="inline float-left nowrap">
+							<select id="market" name="market" class="form-control inline">
+								<option value="jita" selected="">Jita</option>
+								<option value="perimeter">Perimeter</option>
+								<option value="universe">Universe</option>
+								<option value="amarr">Amarr</option>
+								<option value="dodixie">Dodixie</option>
+								<option value="hek">Hek</option>
+								<option value="rens">Rens</option>
+							</select>
+							<button type="reset" onclick="$(&#39;#raw_textarea&#39;).text(&#39;&#39;);" class="btn btn-warning inline">Reset</button>
+							<input type="submit" class="btn btn-primary inline" href="submit" role="button" value="Submit »" />
+						</div>
+					</div>
+				</div>
+
+			</form>
+
+			<script type="text/javascript">
+				$(".number-only").bind("keypress", e => {
+					if (isNaN(this.value + "" + String.fromCharCode(e.charCode))) {
+						return false;
+					}
+				});
+
+				$(".number-only").bind("paste", e => {
+					if (isNaN(e.originalEvent.clipboardData.getData("text"))) {
+						e.preventDefault();
+					}
+				});
+
+				$("body").bind("paste", e => {
+					if (
+						!$(e.originalEvent.target).is("input") &&
+						!$(e.originalEvent.target).is("textarea")
+					) {
+						$("textarea#raw_textarea").val(
+							e.originalEvent.clipboardData.getData("text")
+						);
+					}
+				});
+
+				$("#uploadAppraisal").change(e => {
+					$("#appraisalForm").submit();
+				});
+			</script>
+
+		</section>
+
+		<section class="instructions">
+			<h4><strong>What is this?</strong></h4>
+			<p>
+				Evepraisal is a tool for quickly getting bulk estimates of items
+				from Eve Online.
+			</p>
+			<h4><strong>How does this work?</strong></h4>
+			<p>
+				Find something in Eve Online that you want to price check like a
+				contract, cargo scan result, etc. Press
+				<kbd>CTRL + A</kbd>, <kbd>CTRL + C</kbd>, then click on the lovely box to the
+				left or above this and press <kbd>CTRL + V</kbd>. Submit and you
+				should see a price breakdown of all the items.
+			</p>
+
+			<p>
+			<h4>What all can I paste in there?</h4>
+			<mark>Inventory</mark>
+			<mark>Cargo Scanner</mark>
+			<mark>D-Scan</mark>
+			<mark>Bill of Materials</mark>
+			<mark>Loot History</mark>
+			<mark>Planetary Interaction</mark>
+			<mark>Survey Scanner</mark>
+			<mark>View Contents</mark>
+			<mark>Contracts</mark>
+			<mark>EFT Blocks</mark>
+			<mark>In-game Killmail</mark>
+			<mark>Wallet Transactions</mark>
+			<mark>Asset listings (named ships don't work)</mark>
+			<mark>Manual Entry - Example: "94812 Tritanium"</mark>
+			</p>
+		</section>
+	</main>
+	
+	<footer>
+		<hr />
+		<p>
+			<a href="#">Legal</a>
+			<strong>|</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#">Source</a><strong>|</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#">Issues</a><strong>|</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#">Wiki</a>
+		</p>
+	</footer>
+
+	<script type="text/javascript"></script>
+</body>
+
+</html>
