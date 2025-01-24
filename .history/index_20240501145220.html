@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evepraisal Clone</title>
+    <!-- Halfmoon.css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/halfmoon.min.css"
+      rel="stylesheet"
+      integrity="sha256-SsJizWSIG9JT9Qxbiy8xnYJfjCAkhEQ0hihxRn7jt2M="
+      crossorigin="anonymous"
+    />
+    <!-- Halfmoon modern core theme -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/cores/halfmoon.modern.css"
+      rel="stylesheet"
+      integrity="sha256-DD6elX+jPmbFYPsGvzodUv2+9FHkxHlVtQi0/RJVULs="
+      crossorigin="anonymous"
+    />
+    <!-- Desktop Light -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-light.min.css" integrity="sha512-vToQtWeIAV/M1IyI2UfG2960coqQIr4x+icXgiiLBdHWY8D1WicINvFKOPE8OdAgZQ19KmDIq6467HpuZ5mvJA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />-->
+    <!-- Mobile Light -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-light.min.css" integrity="sha512-EBhFkNAzhuqgCQxsBZLoqnTnvS3VF0V635TNJ7TXZ1ArdVKh/mO50iAXX/e0whOPegbPw/VsduECqVFeUME1KQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!-- Desktop Dark -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css" integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />-->
+    <!-- Mobile Dark -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-dark.min.css"
+      integrity="sha512-3axCmtM0Aq1Zin8EQ/BgsaYCdR9jY488aH7JYG4zTUeEHWGqOjm86hjL4cx6nIWGLMJ/UU4m+MOcQ2D/f2QdfQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--<link rel="stylesheet" href="./css/style.css"/>-->
+    <style>
+      .bg-custom {
+        background-image: linear-gradient(-33deg, #11113388, #113131bb);
+      }
+
+      .search-form {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+      }
+
+      .form-area {
+        margin-top: 3rem;
+      }
+
+      .instructions {
+        margin-top: 3rem;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body
+    data-bs-theme="dark"
+    data-bs-core="modern"
+    class="text-body subpixel-antialiased"
+  >
+    <alert
+      role="dialog"
+      aria-live="polite"
+      aria-label="cookieconsent"
+      aria-describedby="cookieconsent:desc"
+      class="cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--226532788"
+      style=""
+    >
+      <p id="cookieconsent:desc" class="cc-message">
+        This website uses no cookies to ensure you get the best experience on
+        our website.
+        <a
+          aria-label="learn more about cookies"
+          role="button"
+          tabindex="0"
+          class="cc-link"
+          href="https://www.cookiesandyou.com"
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+          onKeyPress=""
+          onKeyDown=""
+          onKeyUp=""
+          >Learn more</a
+        >
+      </p>
+      <form class="cc-compliance">
+        <input
+          type="submit"
+          aria-label="dismiss cookie message"
+          role="button"
+          tabindex="0"
+          class="cc-btn cc-dismiss btn btn-topcoat--cta"
+          value="Got it!"
+        />
+      </form>
+    </alert>
+
+    <header
+      class="fixed-top bg-custom bg-body bg-gradient border border-5 border-start-0 border-top-0 border-end-0 shadow-lg pt-2"
+    >
+      <u style="position: relative; bottom: 0">
+        <h1
+          class="d-inline text-primary bg-light rounded-pill rounded-start-0 rounded-top-0 brand text-start display-2 p-1 pe-5"
+        >
+          Evepraisal
+        </h1>
+        <sub
+          style="position: absolute; right: 17%; bottom: -20%; font-size: 1.5em"
+          class="d-inline bg-light text-warning clone"
+          >Clone</sub
+        >
+      </u>
+      <h5
+        style="line-height: 0; font-weight: 100"
+        class="text-secondary text-center fs-5 subtitle pt-4"
+      >
+        <sup class="text-warning bg-dark rounded p-1"
+          ><i>Easy-to-use</i> <strong>AND</strong> <i>familiar</i> parser and
+          price estimator tool for <u><mark class="rounded-pill b">Eve Online</mark></u></sup
+        >
+      </h5>
+      <search
+        style="position: absolute; right: 0; top: 0"
+        class="search-form bg-info rounded-pill rounded-top-0 rounded-end-0 border border-bottom-0 border-end-0 border-3 border-info-subtle ps-0 pb-0"
+        action="search"
+        method="GET"
+        role="search"
+      >
+        <form
+          style="width: 46vw; top: 0"
+          class="input-group h-auto border border-bottom-0 border-end-0 border-info-subtle border-2 rounded-pill rounded-top-0 rounded-end-0 ps-4"
+        >
+          <input
+            class="topcoat-search-input form-control border border-start-0 border-top-0 border-end-0 border-primary ps-5 h-auto"
+            id="search"
+            name="q"
+            type="text"
+            placeholder="What?"
+            data="Item Name..."
+            autocomplete="off"
+            spellcheck="false"
+            dir="auto"
+            aria-label="search"
+          />
+          <input
+            type="button"
+            class="d-none btn topcoat-button--cta d-sm-none input-group-text rounded-end-0 h-auto"
+            aria-label="Submit search query"
+            value="Search"
+          />
+        </form>
+      </search>
+    </header>
+    <div class="container my-1">
+      <main class="row bg-body rounded-5 container my-5">
+        <div class="col-lg-6 container-fluid form-area py-1 my-5">
+          <form
+            id="appraisal-form"
+            action="https://script.google.com/macros/s/AKfycbxoqM8-CNRjHkItldMechuEvYQgojuAd6o6bQkchLP_Qh_YRRBSrCmK18PkaveJCUA/exec"
+            method="POST"
+            enctype="multipart/form-data"
+            class="card"
+          >
+            <dialog
+              class="d-none modal w-100"
+              id="configure-appraisal-modal bg-body"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="configure-appraisal-modal-label"
+              aria-hidden="true"
+            >
+              <article class="modal-dialog w-100" role="document">
+                <header class="card-header toolbar">
+                  <h1 class="title" id="config-modal-label">
+                    Appraisal Settings
+                  </h1>
+                </header>
+                <fieldset class="modal-body input-group">
+                  <legend for="price_percentage input-group-text">
+                    Price Percentage
+                  </legend>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="form-control number-only"
+                    value="100"
+                    placeholder="100"
+                    name="price_percentage"
+                    id="price_percentage"
+                    data-twofas-input="true"
+                  />
+                </fieldset>
+                <footer class="modal-footer">
+                  <input
+                    type="button"
+                    class="btn btn-primary topcoat-button"
+                    data-dismiss="modal"
+                    value="Close"
+                  />
+                </footer>
+              </article>
+            </dialog>
+          </form>
+          <fieldset id="card main-form">
+            <header class="card-header">
+              <h3>Quick Estimate</h3>
+              <h5
+                class="text-secondary text-center round bg-info rounded bg-opacity-50 border border-info p-1"
+              >
+                <i
+                  >pro-tip:&nbsp;in-game, select the items to appraise,
+                  press&nbsp;<kbd
+                    class="bg-white border border-black text-black"
+                    >CTRL</kbd
+                  >&nbsp;+&nbsp;<kbd
+                    class="bg-white border border-black text-black"
+                    >A</kbd
+                  >,&nbsp;<kbd class="bg-white border border-black text-black"
+                    >CTRL</kbd
+                  >&nbsp;+&nbsp;<kbd
+                    class="bg-white border border-black text-black"
+                    >C</kbd
+                  >,&nbsp;<kbd class="bg-white border border-black text-black"
+                    >CTRL</kbd
+                  >&nbsp;+&nbsp;<kbd
+                    class="bg-white border border-black text-black"
+                    >V</kbd
+                  >
+                </i>
+              </h5>
+            </header>
+            <div class="card-body">
+              <textarea
+                class="form-control topcoat-textarea p-2"
+                id="textarea"
+                name="textarea"
+                rows="8"
+                placeholder="Put items to appraise here."
+                onclick="this.select()"
+              ></textarea>
+              <div class="float-left nowrap input-group py-3">
+                <select id="market" name="market" class="form-control inline">
+                  <option value="jita" selected="">Jita</option>
+                  <option value="perimeter">Perimeter</option>
+                  <option value="universe">Universe</option>
+                  <option value="amarr">Amarr</option>
+                  <option value="dodixie">Dodixie</option>
+                  <option value="hek">Hek</option>
+                  <option value="rens">Rens</option>
+                </select>
+                <input
+                  type="reset"
+                  onclick="$('#raw_textarea').text('');"
+                  class="btn btn-warning btn-outline-warning bg-warning text-dark input-group-text topcoat-button"
+                  value="Reset"
+                />
+                <input
+                  type="submit"
+                  class="btn btn-success btn-outline-success bg-success input-group-text topcoat-button"
+                  href="submit"
+                  role="button"
+                  value="Submit »"
+                />
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-lg-6 instructions container-fluid pb-1 mb-1">
+          <h4><strong>What is this?</strong></h4>
+          <p>
+            Evepraisal is a tool for quickly getting bulk estimates of items
+            from Eve Online.
+          </p>
+          <h4>
+            <strong>How does this work?</strong>
+          </h4>
+          <p>
+            Find something in Eve Online that you want to price check like a
+            contract, cargo scan result, etc. Press <kbd>CTRL</kbd> +
+            <kbd>A</kbd>, <kbd>CTRL</kbd> + <kbd>C</kbd>, then click on the
+            lovely box to the left or above this and press <kbd>CTRL</kbd> +
+            <kbd>V</kbd>. Submit and you should see a price breakdown of all the
+            items.
+          </p>
+          <p></p>
+          <h4>What all can I paste in there?</h4>
+          <mark class="bg-success-subtle border border-secondary"
+            >Inventory</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Cargo Scanner</mark
+          >
+          <mark class="bg-success-subtle border border-secondary">D-Scan</mark>
+          <mark class="bg-success-subtle border border-secondary"
+            >Bill of Materials</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Loot History</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Planetary Interaction</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Survey Scanner</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >View Contents</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Contracts</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >EFT Blocks</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >In-game Killmail</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Wallet Transactions</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Asset listings (named ships don't work)</mark
+          >
+          <mark class="bg-success-subtle border border-secondary"
+            >Manual Entry - Example: "94812 Tritanium"</mark
+          >
+          <p></p>
+        </div>
+      </main>
+    </div>
+    <footer
+      class="fixed-bottom bg-custom bg-body border border-5 border-start-0 border-bottom-0 border-end-0 shadow-lg text-center"
+    >
+      <p class="footer-links py-1 my-0">
+        <a href="#">Legal</a>&nbsp; <strong>|</strong>&nbsp;
+        <a href="#">Source</a>&nbsp; <strong>|</strong>&nbsp;
+        <a href="#">Issues</a>&nbsp; <strong>|</strong>&nbsp;
+        <a href="#">Wiki</a>
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        window.cookieconsent.initialize({
+          palette: {
+            popup: {
+              background: "#111133066",
+              text: "#fff",
+            },
+            button: {
+              background: "#4b81e8",
+            },
+          },
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("search");
+
+        searchInput.addEventListener("focus", function () {
+          // Add focus class to search form
+          document
+            .querySelector(".topcoat-search-input")
+            .classList.add("focus");
+          // Modify width of search input
+          searchInput.style.width = "75vw";
+        });
+
+        searchInput.addEventListener("blur", function () {
+          // Remove focus class from search form
+          document.querySelector(".search-form").classList.remove("focus");
+          // Reset width of search input
+          searchInput.style.width = "";
+        });
+      });
+    </script>
+  </body>
+</html>

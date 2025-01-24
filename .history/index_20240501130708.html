@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evepraisal Clone</title>
+    <!-- Halfmoon.css -->
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/halfmoon.min.css" rel="stylesheet" integrity="sha256-SsJizWSIG9JT9Qxbiy8xnYJfjCAkhEQ0hihxRn7jt2M=" crossorigin="anonymous">
+    <!-- Halfmoon modern core theme -->
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/cores/halfmoon.modern.css" rel="stylesheet" integrity="sha256-DD6elX+jPmbFYPsGvzodUv2+9FHkxHlVtQi0/RJVULs=" crossorigin="anonymous">
+    <!-- Desktop Light -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-light.min.css" integrity="sha512-vToQtWeIAV/M1IyI2UfG2960coqQIr4x+icXgiiLBdHWY8D1WicINvFKOPE8OdAgZQ19KmDIq6467HpuZ5mvJA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />-->
+    <!-- Mobile Light -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-light.min.css" integrity="sha512-EBhFkNAzhuqgCQxsBZLoqnTnvS3VF0V635TNJ7TXZ1ArdVKh/mO50iAXX/e0whOPegbPw/VsduECqVFeUME1KQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!-- Desktop Dark -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css" integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />-->
+    <!-- Mobile Dark -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-dark.min.css" integrity="sha512-3axCmtM0Aq1Zin8EQ/BgsaYCdR9jY488aH7JYG4zTUeEHWGqOjm86hjL4cx6nIWGLMJ/UU4m+MOcQ2D/f2QdfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!--<link rel="stylesheet" href="./css/style.css"/>-->
+   <style>
+
+
+.bg-custom {
+  background-image: linear-gradient(-33deg, #11113388, #113131bb);
+}
+
+.search-form {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.form-area {
+  margin-top: 3rem;
+}
+
+.instructions {
+  margin-top: 3rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+   </style>
+</head>
+
+<body data-bs-theme="dark" data-bs-core="modern" class="text-body subpixel-antialiased">
+    <alert role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-block cc-bottom cc-color-override--226532788" style="">
+        <p id="cookieconsent:desc" class="cc-message">This website uses no cookies to ensure you get the best experience on our website.
+            <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://www.cookiesandyou.com" rel="noopener noreferrer nofollow" target="_blank" onKeyPress="" onKeyDown="" onKeyUp="">Learn more</a>
+        </p>
+        <form class="cc-compliance">
+            <input type="submit" aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss btn btn-topcoat--cta" value="Got it!" />
+        </form>
+    </alert>
+
+    <header class="fixed-top bg-custom  bg-body border border-5 border-start-0 border-top-0 border-end-0 shadow-lg pt-2">
+        <u style="position:relative; bottom:0;"><h1 class="d-inline text-primary brand text-start display-1 p-1">Evepraisal</h1><sub style="position: absolute; left: 87%; bottom: 25%; font-size: 015em" class="d-inline text-warning clone">Clone</sub></u>
+        <h5 class="text-center subtitle pt-4">
+            <i>Easy-to-use</i> parser and price estimator tool for <u><mark>Eve Online</mark></u>
+        </h5>
+        <form class="search-form m-1" action="search" method="GET" role="search">
+            <span style="width: 49vw; top:1vw;" class="input-group h-auto">
+                <input class="topcoat-search-input form-control ps-5 h-auto" id="search" name="q" type="text" placeholder="What are you looking for?" data="Item Name..." autocomplete="off" spellcheck="false" dir="auto" aria-label="search">
+                <input type="button" class="btn topcoat-button input-group-text rounded-end-pill" aria-label="Submit search query" value="Search">
+            </span>
+        </form>
+    </header>
+
+    <main class="bg-body rounded-5 container my-5">
+        <div class="container-fluid form-area py-5 my-5">
+            <form id="appraisal-form" action="https://script.google.com/macros/s/AKfycbxoqM8-CNRjHkItldMechuEvYQgojuAd6o6bQkchLP_Qh_YRRBSrCmK18PkaveJCUA/exec" method="POST" enctype="multipart/form-data" class="card">
+                <dialog class="d-none modal w-100" id="configure-appraisal-modal bg-body" tabindex="-1" role="dialog" aria-labelledby="configure-appraisal-modal-label" aria-hidden="true">
+                    <article class="modal-dialog w-100" role="document">
+                        <header class="card-header toolbar">
+                            <h1 class="title" id="config-modal-label">Appraisal Settings</h1>
+                        </header>
+                        <fieldset class="modal-body input-group">
+                            <legend for="price_percentage input-group-text">Price Percentage</legend>
+                            <input type="number" min="0" max="100" class="form-control number-only" value="100" placeholder="100" name="price_percentage" id="price_percentage" data-twofas-input="true">
+                        </fieldset>
+                        <footer class="modal-footer">
+                            <input type="button" class="btn btn-primary topcoat-button" data-dismiss="modal" value="Close">
+                        </footer>
+                    </article>
+                </dialog>
+            </form>
+            <fieldset id="card main-form">
+                <header class="card-header">
+                    <h3>Quick Estimate</h3>
+                    <h5 class="text-secondary text-center round bg-info rounded bg-opacity-50 border border-info p-1">
+                        <i>pro-tip:&nbsp;in-game, select the items to appraise, press&nbsp;<kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">A</kbd>,&nbsp;<kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">C</kbd>,&nbsp;<kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">V</kbd>
+                        </i>
+                    </h5>
+                </header>
+                <div class="card-body">
+                    <textarea class="form-control topcoat-textarea" id="textarea" name="textarea" rows="8" placeholder="Put items to appraise here." onclick="this.select()"></textarea>
+                    <div class="float-left nowrap input-group py-3">
+                        <select id="market" name="market" class="form-control inline">
+                            <option value="jita" selected="">Jita</option>
+                            <option value="perimeter">Perimeter</option>
+                            <option value="universe">Universe</option>
+                            <option value="amarr">Amarr</option>
+                            <option value="dodixie">Dodixie</option>
+                            <option value="hek">Hek</option>
+                            <option value="rens">Rens</option>
+                        </select>
+                        <input type="reset" onclick="$('#raw_textarea').text('');" class="btn btn-warning btn-outline-warning bg-warning text-dark input-group-text topcoat-button" value="Reset"/>
+                        <input type="submit" class="btn btn-success btn-outline-success bg-success input-group-text topcoat-button" href="submit" role="button" value="Submit »">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="instructions container-fluid pb-5 mb-5">
+            <h4><strong>What is this?</strong></h4>
+            <p>Evepraisal is a tool for quickly getting bulk estimates of items from Eve Online.</p>
+            <h4>
+                <strong>How does this work?</strong>
+            </h4>
+            <p>Find something in Eve Online that you want to price check like a contract, cargo scan result, etc. Press <kbd>CTRL</kbd> + <kbd>A</kbd>, <kbd>CTRL</kbd> + <kbd>C</kbd>, then click on the lovely box to the left or above this and press <kbd>CTRL</kbd>                + <kbd>V</kbd>. Submit and you should see a price breakdown of all the items.</p>
+            <p>
+            </p>
+            <h4>What all can I paste in there?</h4>
+            <mark class="bg-success-subtle border border-secondary">Inventory</mark>
+            <mark class="bg-success-subtle border border-secondary">Cargo Scanner</mark>
+            <mark class="bg-success-subtle border border-secondary">D-Scan</mark>
+            <mark class="bg-success-subtle border border-secondary">Bill of Materials</mark>
+            <mark class="bg-success-subtle border border-secondary">Loot History</mark>
+            <mark class="bg-success-subtle border border-secondary">Planetary Interaction</mark>
+            <mark class="bg-success-subtle border border-secondary">Survey Scanner</mark>
+            <mark class="bg-success-subtle border border-secondary">View Contents</mark>
+            <mark class="bg-success-subtle border border-secondary">Contracts</mark>
+            <mark class="bg-success-subtle border border-secondary">EFT Blocks</mark>
+            <mark class="bg-success-subtle border border-secondary">In-game Killmail</mark>
+            <mark class="bg-success-subtle border border-secondary">Wallet Transactions</mark>
+            <mark class="bg-success-subtle border border-secondary">Asset listings (named ships don't work)</mark>
+            <mark class="bg-success-subtle border border-secondary">Manual Entry - Example: "94812 Tritanium"</mark>
+            <p></p>
+        </div>
+    </main>
+
+    <footer class="fixed-bottom bg-custom bg-body border border-5 border-start-0 border-bottom-0 border-end-0 shadow-lg text-center">
+        <p class="footer-links pt-2">
+            <a href="#">Legal</a>&nbsp;
+            <strong>|</strong>&nbsp;
+            <a href="#">Source</a>&nbsp;
+            <strong>|</strong>&nbsp;
+            <a href="#">Issues</a>&nbsp;
+            <strong>|</strong>&nbsp;
+            <a href="#">Wiki</a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+    <script>
+        window.addEventListener("load", () => {
+            window.cookieconsent.initialize({
+                palette: {
+                    popup: {
+                        background: "#00000000",
+                        text: "#fff",
+                    },
+                    button: {
+                        background: "#4b81e8",
+                    },
+                },
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+</html>
