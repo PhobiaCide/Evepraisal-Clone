@@ -249,19 +249,20 @@
                         <fieldset id="main-form">
                             <header class="card-header">
                                 <h3 class="mt-5">Quick Estimate</h3>
-                                <h5
-                                    class="text-bg-info text-start round rounded bg-opacity-50 border border-info p-2">
+                                <h5 class="text-bg-info text-start round rounded bg-opacity-50 border border-info p-2">
                                     <i class="text-bg-info rounded bg-opacity-50 p-2">Pro-tip</i>:<br />
-                              
-                                        Use <kbd
+
+                                    Use <kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
                                         class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">A</kbd>,&nbsp;<kbd
+                                    >A</kbd>,&nbsp;<kbd
+                                        class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
                                         class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">C</kbd>&nbsp;and <kbd
+                                    >C</kbd>&nbsp;and <kbd
+                                        class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
                                         class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">V</kbd>
+                                    >V</kbd>
                                     in-game!
-                               
+
                                 </h5>
                             </header>
                             <section class="card-body form-floating">
@@ -269,7 +270,7 @@
                                     class="form-control topcoat-textarea h-auto p-2"
                                     id="textarea"
                                     name="textarea"
-                                    rows="8"
+                                    rows="7"
                                     placeholder="Paste in items to appraise here."
                                     onclick="this.select()"
                                 ></textarea>
@@ -282,16 +283,18 @@
                             </section>
                             <footer class="card-footer">
                                 <div class="float-start nowrap input-group py-3">
-
+                                    <input
+                                    type="button"
+                                    onclick="$('#raw_textarea').text('');"
+                                    class="btn text-bg-primary bg-opacity-75 input-group-text topcoat-button topcoat-icon-button"
+                                    value="⚙️"
+                                />
                                     <select
                                         id="market"
                                         name="market"
-                                        class="form-select inline"
+                                        class="form-select"
                                     >
-                                        <option
-                                            value="jita"
-                                            selected=""
-                                        >Jita</option>
+                                        <option value="jita">Jita</option>
                                         <option value="perimeter">Perimeter</option>
                                         <option value="universe">Universe</option>
                                         <option value="amarr">Amarr</option>
@@ -303,7 +306,7 @@
                                     <input
                                         type="reset"
                                         onclick="$('#raw_textarea').text('');"
-                                        class="bg-opacity-50 text-body input-group-text topcoat-button"
+                                        class="btn bg-opacity-75 text-body input-group-text topcoat-button"
                                         value="Reset"
                                         onkeypress=""
                                         onkeydown=""
@@ -311,7 +314,7 @@
                                     />
                                     <input
                                         type="submit"
-                                        class="btn btn-success btn-outline-success input-group-text text-body topcoat-button--cta"
+                                        class="btn bg-opacity-75 btn-success text-bg-success btn-outline-success input-group-text text-body topcoat-button"
                                         href="submit"
                                         value="Submit"
                                         onkeypress=""
@@ -331,30 +334,29 @@
                     <h4>
                         <strong>How does this work?</strong>
                     </h4>
-                    <h5
-                                    class="text-bg-info text-start round rounded bg-opacity-50 border border-info p-2">
-                           
-                                    <ul>
-                                        <li>
-                                    In-game, first select any of the the items.
-                                        </li>
-                                        <li>Press <kbd
-                                        class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">A</kbd>
-                                    to select all items
-                                    </li>
-                                    <li>Press <kbd
-                                        class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">C</kbd>
-                                    to copy selected items
-                                </li>
-                                <li>Press <kbd
-                                        class="bg-white border border-black text-black"
-                                    >CTRL</kbd>&nbsp;+&nbsp;<kbd class="bg-white border border-black text-black">V</kbd>
-                                    to paste copied items into the tetext area below
-                                    </li>
-                                    </ul>
-                                </h5>
+                    <h5 class="text-bg-info text-start round rounded bg-opacity-50 border border-info p-2">
+
+                        <ul>
+                            <li>
+                                In-game, first select any of the the items.
+                            </li>
+                            <li>Press <kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
+                                    class="bg-white border border-black text-black"
+                                >A</kbd>
+                                to select all items
+                            </li>
+                            <li>Press <kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
+                                    class="bg-white border border-black text-black"
+                                >C</kbd>
+                                to copy selected items
+                            </li>
+                            <li>Press <kbd class="bg-white border border-black text-black">CTRL</kbd>&nbsp;+&nbsp;<kbd
+                                    class="bg-white border border-black text-black"
+                                >V</kbd>
+                                to paste copied items into the tetext area below
+                            </li>
+                        </ul>
+                    </h5>
                     <p>
                         Find something in Eve Online that you want to price check like a
                         contract, cargo scan result, etc. Press <kbd
